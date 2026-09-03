@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TLORC Youth Ministry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2A3E;
+    --navy-deep:#0A1E2C;
+    --teal:#1C5A6E;
+    --gold:#E8A33D;
+    --gold-soft:#F3C579;
+    --coral:#D9654F;
+    --cream:#FBF6EC;
+    --cream-dim:#F1EAD9;
+    --ink:#16232B;
+    --ink-soft:#4B5A62;
+    --line:#DED2B5;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    color:var(--navy);
+    margin:0;
+    line-height:1.08;
+  }
+  a{color:inherit;}
+  button{font-family:inherit;cursor:pointer;}
+  img,svg{display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  header.site{
+    position:sticky;top:0;z-index:40;
+    background:var(--navy);
+    border-bottom:3px solid var(--gold);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1080px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;color:var(--cream);text-decoration:none;}
+  .brand .brandtext{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;letter-spacing:.02em;color:#fff;}
+  .brand .brandtext small{display:block;font-family:'Work Sans',sans-serif;font-weight:500;font-size:.62rem;letter-spacing:.14em;color:var(--gold-soft);}
+  nav.links{display:flex;gap:28px;align-items:center;}
+  nav.links a{color:var(--cream-dim);text-decoration:none;font-size:.92rem;font-weight:500;}
+  nav.links a:hover{color:var(--gold-soft);}
+  .navbtns{display:flex;gap:14px;align-items:center;}
+  .admin-corner-btn{
+    display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+    background:transparent;border:1.5px solid rgba(251,246,236,.35);color:var(--cream-dim);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .admin-corner-btn:hover{border-color:var(--gold);color:var(--gold-soft);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:9px 18px;border-radius:999px;border:1.5px solid transparent;
+    font-weight:600;font-size:.88rem;text-decoration:none;transition:transform .12s ease, background .15s ease;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);}
+  .btn-gold:hover{background:var(--gold-soft);}
+  .btn-outline{border-color:rgba(251,246,236,.35);color:var(--cream);background:transparent;}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold-soft);}
+  .btn-coral{background:var(--coral);color:#fff;}
+  .btn-coral:hover{opacity:.9;}
+  .btn-navy{background:var(--navy);color:#fff;}
+  .btn-navy:hover{background:var(--navy-deep);}
+  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--navy);}
+  .btn-sm{padding:6px 13px;font-size:.78rem;}
+  .btn-block{width:100%;justify-content:center;}
+  .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;}
+
+  .userpill{display:flex;align-items:center;gap:10px;color:var(--cream);font-size:.85rem;}
+  .userpill .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+
+  /* HERO */
+  .hero{
+    background:
+      radial-gradient(ellipse at 85% 15%, rgba(232,163,61,.16), transparent 55%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:var(--cream);
+    padding:64px 0 84px;
+    position:relative;overflow:hidden;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;}
+  .eyebrow-line{display:flex;align-items:center;gap:10px;color:var(--gold-soft);font-size:.8rem;font-weight:600;letter-spacing:.08em;margin-bottom:18px;}
+  .eyebrow-line svg{width:16px;height:16px;flex:none;}
+  .hero h1{font-size:clamp(2.1rem,4.4vw,3.4rem);color:#fff;font-weight:600;max-width:11.5ch;}
+  .hero .chant{
+    margin-top:16px;font-family:'Fraunces',serif;letter-spacing:.16em;font-size:.82rem;
+    color:var(--gold);font-weight:600;
+  }
+  .hero p.lead{margin-top:20px;color:var(--cream-dim);font-size:1.05rem;max-width:46ch;}
+  .hero .ctarow{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
+  .hero .meta{margin-top:34px;display:flex;gap:28px;flex-wrap:wrap;color:var(--cream-dim);font-size:.85rem;}
+  .hero .meta div{display:flex;align-items:center;gap:8px;}
+  .hero .meta svg{width:16px;height:16px;color:var(--gold);flex:none;}
+  .anchor-art{position:relative;display:flex;align-items:center;justify-content:center;}
+
+  /* SECTIONS */
+  section{padding:64px 0;}
+  section.dim{background:var(--cream-dim);}
+  .section-head{max-width:640px;margin-bottom:36px;}
+  .section-head .kicker{color:var(--coral);font-weight:600;font-size:.8rem;letter-spacing:.04em;margin-bottom:8px;}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:600;}
+  .section-head p{margin-top:10px;color:var(--ink-soft);}
+
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
+  .rope-divider{height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 10px, transparent 10px 16px);margin:12px 0 28px;}
+
+  .leader-card{
+    display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px;margin-top:22px;
+  }
+  .leader-avatar{
+    width:52px;height:52px;border-radius:50%;background:var(--teal);color:#fff;flex:none;
+    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;
+  }
+  .leader-card h3{font-size:1rem;}
+  .leader-card .role{color:var(--coral);font-size:.78rem;font-weight:600;letter-spacing:.03em;margin:2px 0 6px;}
+  .leader-card p{margin:0;color:var(--ink-soft);font-size:.92rem;}
+
+  .vision-box{
+    background:var(--navy);color:var(--cream);border-radius:var(--radius);padding:26px;
+  }
+  .vision-box h3{color:var(--gold-soft);font-size:1rem;letter-spacing:.03em;margin-bottom:10px;}
+  .vision-box p{color:var(--cream-dim);margin:0;font-size:.98rem;}
+
+  /* Countdown */
+  .meeting-strip{
+    display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;
+  }
+  .meeting-strip .who{display:flex;gap:14px;align-items:center;}
+  .meeting-strip .who svg{width:34px;height:34px;color:var(--coral);flex:none;}
+  .meeting-strip h3{font-size:1.05rem;}
+  .meeting-strip .who p{margin:2px 0 0;color:var(--ink-soft);font-size:.88rem;}
+  .countdown{display:flex;gap:10px;}
+  .countdown .c{
+    background:var(--cream-dim);border-radius:10px;padding:10px 14px;text-align:center;min-width:60px;
+  }
+  .countdown .c b{display:block;font-family:'Fraunces',serif;font-size:1.3rem;color:var(--navy);}
+  .countdown .c span{font-size:.66rem;letter-spacing:.06em;color:var(--ink-soft);}
+
+  /* Cards grid: events/sermons */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .item-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;
+    display:flex;flex-direction:column;gap:10px;position:relative;
+  }
+  .tag{
+    align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px;
+  }
+  .tag.event{background:#FDEFE3;color:#B96A1E;}
+  .tag.sermon{background:#E4EEF0;color:var(--teal);}
+  .item-card h3{font-size:1.05rem;}
+  .item-card .when{color:var(--coral);font-size:.82rem;font-weight:600;}
+  .item-card p.desc{color:var(--ink-soft);font-size:.9rem;margin:0;}
+  .item-card .speaker{font-size:.8rem;color:var(--ink-soft);font-style:italic;}
+  .del{background:none;border:1px solid #e0b3ab;color:#b55;font-size:.75rem;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .del:hover{background:#FBE3DD;}
+  .item-card .del{position:absolute;top:14px;right:14px;border:none;padding:0;}
+  .empty-note{color:var(--ink-soft);font-size:.92rem;background:#fff;border:1px dashed var(--line);border-radius:var(--radius);padding:24px;text-align:center;}
+
+  /* Prayer wall */
+  .prayer-panel{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:6px;}
+  .field input,.field textarea,.field select{
+    width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;
+    font-family:inherit;font-size:.92rem;background:var(--cream);color:var(--ink);
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold);}
+  .field textarea{min-height:110px;resize:vertical;}
+  .checkline{display:flex;align-items:flex-start;gap:9px;font-size:.85rem;color:var(--ink-soft);margin-bottom:16px;}
+  .checkline input{margin-top:3px;}
+  .note-inline{font-size:.78rem;color:var(--ink-soft);margin-top:14px;}
+  .prayer-verse{
+    background:var(--teal);color:#fff;border-radius:var(--radius);padding:26px;
+  }
+  .prayer-verse p{font-family:'Fraunces',serif;font-size:1.15rem;font-style:italic;margin:0 0 10px;}
+  .prayer-verse span{font-size:.82rem;color:#CDE3E8;}
+
+  /* Join */
+  .join-box{
+    background:linear-gradient(135deg,var(--coral),#C24C39);color:#fff;border-radius:var(--radius);
+    padding:38px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;
+  }
+  .join-box h2{color:#fff;font-size:1.5rem;}
+  .join-box p{margin:8px 0 0;color:#FBE3DD;max-width:46ch;}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;}
+  .info-card h3{font-size:.95rem;display:flex;align-items:center;gap:9px;margin-bottom:10px;}
+  .info-card h3 svg{width:18px;height:18px;color:var(--coral);}
+  .info-card p,.info-card a{color:var(--ink-soft);font-size:.92rem;text-decoration:none;margin:0;}
+  .info-card a:hover{color:var(--coral);}
+  .social-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+  .social-btn{
+    display:flex;align-items:center;gap:8px;background:var(--navy);color:#fff;padding:9px 14px;border-radius:999px;
+    font-size:.82rem;font-weight:600;text-decoration:none;
+  }
+  .social-btn:hover{background:var(--navy-deep);}
+  .social-btn svg{width:15px;height:15px;}
+
+  /* Follow bar — big, up top */
+  .followbar{background:var(--gold);padding:16px 0;}
+  .followbar .wrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .followbar .label{font-weight:700;color:var(--navy-deep);font-size:.92rem;margin-right:4px;}
+  .follow-btn{
+    display:flex;align-items:center;gap:10px;background:var(--navy);color:#fff;
+    padding:13px 24px;border-radius:999px;font-weight:700;font-size:1rem;text-decoration:none;
+    transition:transform .12s ease, background .15s ease;
+  }
+  .follow-btn:hover{transform:translateY(-2px);background:var(--navy-deep);}
+  .follow-btn svg{width:24px;height:24px;flex:none;}
+
+  /* Announcements */
+  .announce-card{
+    background:#fff;border-left:5px solid var(--coral);border-radius:0 var(--radius) var(--radius) 0;
+    padding:18px 22px;margin-bottom:14px;
+  }
+  .announce-card .when{font-size:.76rem;font-weight:700;letter-spacing:.04em;color:var(--coral);margin-bottom:4px;}
+  .announce-card h3{font-size:1.02rem;}
+  .announce-card p{margin:6px 0 0;color:var(--ink-soft);font-size:.92rem;}
+
+  /* Gallery */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .gallery-item{border-radius:var(--radius);overflow:hidden;background:#fff;border:1px solid var(--line);}
+  .gallery-item img{width:100%;height:170px;object-fit:cover;}
+  .gallery-item .cap{padding:10px 12px;font-size:.8rem;color:var(--ink-soft);}
+  @media(max-width:860px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+
+  footer{background:var(--navy-deep);color:var(--cream-dim);padding:30px 0;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center;font-size:.82rem;}
+  footer a{color:var(--cream-dim);text-decoration:underline;}
+  footer a:hover{color:var(--gold-soft);}
+
+  /* Modal */
+  .overlay{
+    position:fixed;inset:0;background:rgba(10,20,28,.6);display:none;align-items:center;justify-content:center;
+    z-index:100;padding:20px;
+  }
+  .overlay.show{display:flex;}
+  .modal{
+    background:var(--cream);border-radius:var(--radius);padding:30px;max-width:420px;width:100%;
+    max-height:88vh;overflow-y:auto;position:relative;
+  }
+  .modal h2{font-size:1.3rem;margin-bottom:4px;}
+  .modal .sub{color:var(--ink-soft);font-size:.85rem;margin-bottom:20px;}
+  .modal-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:1.2rem;color:var(--ink-soft);}
+  .tabbar{display:flex;gap:6px;background:var(--cream-dim);padding:4px;border-radius:999px;margin-bottom:20px;}
+  .tabbar button{
+    flex:1;border:none;background:transparent;padding:8px;border-radius:999px;font-weight:600;font-size:.84rem;color:var(--ink-soft);
+  }
+  .tabbar button.active{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.08);}
+  .form-err{background:#FBE3DD;color:#9A3B27;font-size:.82rem;padding:9px 12px;border-radius:8px;margin-bottom:14px;display:none;}
+  .form-err.show{display:block;}
+  .form-ok{background:#E4EEF0;color:#1C5A6E;font-size:.85rem;padding:12px 14px;border-radius:8px;margin-bottom:14px;}
+
+  /* Admin */
+  .admin-shell{background:var(--cream-dim);min-height:100vh;}
+  .admin-corner-btn{opacity:.9;}
+  .admin-top{background:var(--navy);color:#fff;padding:18px 0;}
+  .admin-top .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .admin-tabs{display:flex;gap:8px;margin:22px 0;flex-wrap:wrap;}
+  .admin-tabs button{
+    background:#fff;border:1px solid var(--line);padding:9px 16px;border-radius:999px;font-size:.85rem;font-weight:600;color:var(--ink-soft);
+  }
+  .admin-tabs button.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:26px;}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;}
+  .stat b{display:block;font-family:'Fraunces',serif;font-size:1.7rem;color:var(--navy);}
+  .stat span{font-size:.8rem;color:var(--ink-soft);}
+  .prayer-row{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;}
+  .prayer-row .top{display:flex;justify-content:space-between;gap:10px;font-size:.8rem;color:var(--ink-soft);margin-bottom:6px;}
+  .prayer-row .top b{color:var(--navy);}
+  .prayer-row p{margin:0;font-size:.93rem;}
+  .pill-status{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:999px;background:#FDEFE3;color:#B96A1E;}
+  .pill-status.prayed{background:#E4EEF0;color:var(--teal);}
+  .member-row{display:flex;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:8px;font-size:.88rem;}
+  .member-row .name{font-weight:600;color:var(--navy);}
+  .member-row .meta2{color:var(--ink-soft);font-size:.8rem;}
+
+  .hidden{display:none !important;}
+  .loading-note{color:var(--ink-soft);font-size:.9rem;padding:20px;text-align:center;}
+
+  @media(max-width:980px){
+    nav.links{display:none;}
+    nav.links.show{
+      display:flex;flex-direction:column;align-items:flex-start;gap:14px;
+      position:absolute;top:64px;left:0;right:0;background:var(--navy);
+      padding:18px 24px;border-bottom:3px solid var(--gold);z-index:39;
+    }
+    .menu-toggle{display:block;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .anchor-art{order:-1;max-width:220px;margin:0 auto;}
+    .twocol,.prayer-panel,.contact-grid{grid-template-columns:1fr;}
+    .grid3{grid-template-columns:1fr;}
+    .stat-row{grid-template-columns:1fr;}
+    .meeting-strip{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div id="siteContent">
+<!-- ===== NAV ===== -->
+<header class="site">
+  <div class="nav">
+    <a href="#home" class="brand">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><circle cx="12" cy="5" r="2.2"/><path d="M12 8v13"/><path d="M5 13a7 7 0 0 0 14 0"/><path d="M5 13H3"/><path d="M21 13h-2"/></svg>
+      <span class="brandtext">TLORC Youth Ministry<small>Be strong as the anchor</small></span>
+    </a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#gatherings">Gatherings</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#prayer">Prayer Wall</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="navbtns">
+      <button class="btn btn-gold btn-sm" onclick="openJoin()">Join the church</button>
+      <button class="admin-corner-btn" onclick="openAdminLogin()" title="Ministry staff login" aria-label="Admin login">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+      </button>
+    </div>
+    <button class="menu-toggle" onclick="document.querySelector('nav.links').classList.toggle('show')">☰</button>
+  </div>
+</header>
+
+<!-- ===== FOLLOW BAR (big, up front) ===== -->
+<div class="followbar">
+  <div class="wrap">
+    <span class="label">Follow TLORC Youth Ministry:</span>
+    <a class="follow-btn" target="_blank" rel="noopener" href="https://www.facebook.com/share/1LVNdkKBiw/?mibextid=wwXIfr">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 9.5H15.8V6.5h-2.3c-2.2 0-3.8 1.8-3.8 4v1.7H7.8v3h1.9V21h3v-5.8h2.3l.7-3h-3v-1.4c0-.75.35-1.3 1.3-1.3z"/></svg>
+      Facebook
+    </a>
+    <a class="follow-btn" target="_blank" rel="noopener" href="https://www.tiktok.com/@psalmists_crew?_r=1&_t=ZS-98leMy7ARV6">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-2.55-.94A4.3 4.3 0 0 1 12.6 2h-3.1v13.4a2.6 2.6 0 1 1-2.34-2.59v-3.13a5.72 5.72 0 1 0 5.44 5.72V9.68a7.3 7.3 0 0 0 4 1.2V7.79a4.3 4.3 0 0 1-.4-1.97z"/></svg>
+      TikTok · @psalmists_crew
+    </a>
+    <a class="follow-btn" target="_blank" rel="noopener" href="https://www.tiktok.com/@tlorc.youth?_r=1&_t=ZS-98ldADaz6gP">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-2.55-.94A4.3 4.3 0 0 1 12.6 2h-3.1v13.4a2.6 2.6 0 1 1-2.34-2.59v-3.13a5.72 5.72 0 1 0 5.44 5.72V9.68a7.3 7.3 0 0 0 4 1.2V7.79a4.3 4.3 0 0 1-.4-1.97z"/></svg>
+      TikTok · @tlorc.youth
+    </a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2"><path d="M12 2v6"/><circle cx="12" cy="5" r="2"/><path d="M12 8v13"/><path d="M5 13a7 7 0 0 0 14 0"/></svg>
+        TLORC Youth Ministry &middot; Teshie Mangoase
+      </div>
+      <h1>Raising young leaders who anchor their lives in Jesus Christ.</h1>
+      <div class="chant">K3K3 OLA ESTSOO</div>
+      <p class="lead">A home for young people to grow spiritually, mentally, socially and financially — together, every week, under the leadership of Nii Martey Bernard.</p>
+      <div class="ctarow">
+        <button class="btn btn-gold" onclick="openJoin()">Become a member</button>
+        <a href="#prayer" class="btn btn-outline">Request prayer</a>
+      </div>
+      <div class="meta">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Saturdays, 5:30&nbsp;PM</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> London Bridge, Teshie Mangoase</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z"/></svg> +233 55 317 1578</div>
+      </div>
+    </div>
+    <div class="anchor-art">
+      <svg width="240" height="290" viewBox="0 0 240 290" fill="none">
+        <circle cx="120" cy="145" r="118" fill="#123246"/>
+        <g stroke="#E8A33D" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <circle cx="120" cy="58" r="16"/>
+          <path d="M120 74 V 210"/>
+          <path d="M92 96 h56"/>
+          <path d="M60 150 a60 60 0 0 0 120 0"/>
+          <path d="M60 150 q-14 8 -8 26 q8 18 30 12" stroke-linecap="round"/>
+          <path d="M180 150 q14 8 8 26 q-8 18 -30 12" stroke-linecap="round"/>
+        </g>
+        <path d="M120 210 l0 40 M105 235 l30 0" stroke="#E8A33D" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ANNOUNCEMENTS ===== -->
+<section id="announcements">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Latest word</div>
+      <h2>Announcements</h2>
+      <p>Notices from the ministry team, posted right here for everyone to see.</p>
+    </div>
+    <div id="publicAnnouncements">
+      <div class="loading-note">Loading announcements…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT / VISION ===== -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Who we are</div>
+      <h2>Built on faith. Growing in purpose.</h2>
+    </div>
+    <div class="twocol">
+      <div>
+        <p style="color:var(--ink-soft)">TLORC Youth Ministry HQ is led by <strong style="color:var(--navy)">Mr. Nii Martey Bernard</strong>, committed to raising young leaders passionate about Jesus Christ, and to nurturing a heart that always seeks God first.</p>
+        <div class="leader-card">
+          <div class="leader-avatar">NMB</div>
+          <div>
+            <h3>Nii Martey Bernard</h3>
+            <div class="role">Founder &amp; Leader, TLORC Youth Ministry</div>
+            <p>Shepherding the ministry's young people toward Christ-centered leadership, one gathering at a time.</p>
+          </div>
+        </div>
+      </div>
+      <div class="vision-box">
+        <h3>Our vision</h3>
+        <p>To empower and build youth spiritually, mentally, socially and financially — equipping a generation that leads with faith and purpose.</p>
+        <div class="rope-divider" style="background:repeating-linear-gradient(90deg,rgba(251,246,236,.35) 0 10px, transparent 10px 16px)"></div>
+        <h3>Our motto</h3>
+        <p style="font-family:'Fraunces',serif;font-style:italic;color:#fff;font-size:1.05rem">"Be strong as the anchor" — K3k3 ola estsoo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GATHERINGS (weekly + events/sermons) ===== -->
+<section class="dim" id="gatherings">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Gatherings</div>
+      <h2>Meetings, events &amp; sermons</h2>
+      <p>We meet in person every week — and gather for special events and sermons throughout the year.</p>
+    </div>
+
+    <div class="meeting-strip">
+      <div class="who">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div>
+          <h3>Weekly meeting</h3>
+          <p>Every Saturday &middot; 5:30 PM &middot; London Bridge, Teshie Mangoase</p>
+        </div>
+      </div>
+      <div class="countdown" id="countdown">
+        <div class="c"><b id="cdDays">–</b><span>DAYS</span></div>
+        <div class="c"><b id="cdHours">–</b><span>HRS</span></div>
+        <div class="c"><b id="cdMins">–</b><span>MIN</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:34px;display:flex;justify-content:space-between;align-items:baseline;">
+      <h3 style="font-family:'Fraunces',serif;font-size:1.2rem;color:var(--navy)">Upcoming</h3>
+    </div>
+    <div class="rope-divider"></div>
+    <div class="grid3" id="publicEventsGrid">
+      <div class="loading-note">Loading upcoming events and sermons…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRAYER WALL ===== -->
+<section id="prayer">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Prayer wall</div>
+      <h2>Bring your requests. We'll carry them together.</h2>
+      <p>Every request reaches our ministry team directly and is held in confidence.</p>
+    </div>
+    <div class="prayer-panel">
+      <div class="form-card">
+        <div id="prayerFormErr" class="form-err"></div>
+        <div id="prayerFormOk" class="form-ok hidden">Your prayer request has been received. Thank you for trusting us with it. 🙏</div>
+        <form id="prayerForm" onsubmit="submitPrayer(event)">
+          <div class="field">
+            <label for="pName">Your name</label>
+            <input type="text" id="pName" placeholder="e.g. Ama Owusu" required>
+          </div>
+          <div class="field">
+            <label for="pContact">Phone or email (optional)</label>
+            <input type="text" id="pContact" placeholder="So we can follow up with you">
+          </div>
+          <div class="field">
+            <label for="pRequest">Your prayer request</label>
+            <textarea id="pRequest" placeholder="Share as much or as little as you'd like…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-coral btn-block">Send prayer request</button>
+          <p class="note-inline">Requests are reviewed by the ministry's admin team and are not posted publicly.</p>
+        </form>
+      </div>
+      <div class="prayer-verse">
+        <p>"Do not be anxious about anything, but in every situation, by prayer and petition, present your requests to God."</p>
+        <span>Philippians 4:6</span>
+        <div class="rope-divider" style="background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 10px, transparent 10px 16px)"></div>
+        <p style="font-size:.92rem;color:#fff;font-style:normal;font-family:'Work Sans',sans-serif;">No account needed — just fill in the form and our ministry team will see it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JOIN ===== -->
+<section class="dim" id="join">
+  <div class="wrap">
+    <div class="join-box">
+      <div>
+        <h2>Ready to plant your feet with us?</h2>
+        <p>No account or password needed — just share a few details and let us know you're with us.</p>
+      </div>
+      <button class="btn btn-gold" onclick="openJoin()">Join the church</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="dim" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Moments</div>
+      <h2>Photo gallery</h2>
+      <p>A look at life in the ministry — posted by our admin team.</p>
+    </div>
+    <div class="gallery-grid" id="publicGalleryGrid">
+      <div class="loading-note">Loading photos…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Find us</div>
+      <h2>Visit, call, or follow along</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="info-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Location</h3>
+        <p>London Bridge, Teshie Mangoase</p>
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=London%20Bridge%2C%20Teshie%20Mangoase">Get directions →</a>
+      </div>
+      <div class="info-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z"/></svg>Phone</h3>
+        <a href="tel:+233553171578">+233 55 317 1578</a>
+      </div>
+      <div class="info-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Weekly meeting</h3>
+        <p>Every Saturday, 5:30 PM</p>
+      </div>
+      <div class="info-card">
+        <h3>Follow the ministry</h3>
+        <div class="social-row">
+          <a class="social-btn" target="_blank" rel="noopener" href="https://www.facebook.com/share/1LVNdkKBiw/?mibextid=wwXIfr">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 9.5H15.8V6.5h-2.3c-2.2 0-3.8 1.8-3.8 4v1.7H7.8v3h1.9V21h3v-5.8h2.3l.7-3h-3v-1.4c0-.75.35-1.3 1.3-1.3z"/></svg>
+            Facebook
+          </a>
+          <a class="social-btn" target="_blank" rel="noopener" href="https://www.tiktok.com/@psalmists_crew?_r=1&_t=ZS-98leMy7ARV6">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-2.55-.94A4.3 4.3 0 0 1 12.6 2h-3.1v13.4a2.6 2.6 0 1 1-2.34-2.59v-3.13a5.72 5.72 0 1 0 5.44 5.72V9.68a7.3 7.3 0 0 0 4 1.2V7.79a4.3 4.3 0 0 1-.4-1.97z"/></svg>
+            @psalmists_crew
+          </a>
+          <a class="social-btn" target="_blank" rel="noopener" href="https://www.tiktok.com/@tlorc.youth?_r=1&_t=ZS-98ldADaz6gP">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-2.55-.94A4.3 4.3 0 0 1 12.6 2h-3.1v13.4a2.6 2.6 0 1 1-2.34-2.59v-3.13a5.72 5.72 0 1 0 5.44 5.72V9.68a7.3 7.3 0 0 0 4 1.2V7.79a4.3 4.3 0 0 1-.4-1.97z"/></svg>
+            @tlorc.youth
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yearNow"></span> TLORC Youth Ministry &middot; Be strong as the anchor</span>
+  </div>
+</footer>
+</div><!-- /siteContent -->
+
+<!-- ===== JOIN MODAL (no account/login needed) ===== -->
+<div class="overlay" id="joinOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeJoin()">✕</button>
+    <h2>Join TLORC Youth Ministry</h2>
+    <p class="sub">Just share a few details — there's no account or password to set up.</p>
+    <div id="joinErr" class="form-err"></div>
+    <div id="joinOk" class="form-ok hidden">Thank you for joining TLORC Youth Ministry! We're glad to have you. 🎉</div>
+    <form id="joinForm" onsubmit="doJoin(event)">
+      <div class="field"><label>Full name</label><input type="text" id="jName" required></div>
+      <div class="field"><label>Phone or email</label><input type="text" id="jContact" required></div>
+      <div class="field"><label>Where are you joining from? (optional)</label><input type="text" id="jLocation" placeholder="e.g. Teshie, Accra"></div>
+      <div class="field">
+        <label>Anything you'd like to share with the church? (optional)</label>
+        <textarea id="jMessage" placeholder="A testimony, a note, something on your heart…"></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold btn-block">Join the church</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== ADMIN LOGIN MODAL ===== -->
+<div class="overlay" id="adminOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAdminLogin()">✕</button>
+    <h2>Admin sign in</h2>
+    <p class="sub">For ministry staff managing events, sermons, members and prayer requests.</p>
+    <div id="adminErr" class="form-err"></div>
+    <form onsubmit="doAdminLogin(event)">
+      <div class="field"><label>Admin username</label><input type="text" id="adminUsername" required></div>
+      <div class="field"><label>Admin password</label><input type="password" id="adminPassword" required></div>
+      <button type="submit" class="btn btn-navy btn-block">Enter admin space</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== ADMIN DASHBOARD (replaces page content when active) ===== -->
+<div class="admin-shell hidden" id="adminShell">
+  <div class="admin-top">
+    <div class="wrap">
+      <div>
+        <strong>TLORC Admin Space</strong>
+        <div style="font-size:.8rem;color:var(--gold-soft)">Signed in as <span id="adminNameLabel"></span></div>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="adminLogout()">Exit admin</button>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:26px;padding-bottom:70px;">
+    <div class="stat-row">
+      <div class="stat"><b id="statMembers">0</b><span>Members joined</span></div>
+      <div class="stat"><b id="statPrayers">0</b><span>Prayer requests</span></div>
+      <div class="stat"><b id="statEvents">0</b><span>Events &amp; sermons posted</span></div>
+      <div class="stat"><b id="statAnnouncements">0</b><span>Announcements posted</span></div>
+      <div class="stat"><b id="statPhotos">0</b><span>Photos in gallery</span></div>
+    </div>
+    <div class="admin-tabs">
+      <button class="active" data-tab="content" onclick="switchAdminTab('content')">Events &amp; Sermons</button>
+      <button data-tab="announcements" onclick="switchAdminTab('announcements')">Announcements</button>
+      <button data-tab="photos" onclick="switchAdminTab('photos')">Photos</button>
+      <button data-tab="prayers" onclick="switchAdminTab('prayers')">Prayer Requests</button>
+      <button data-tab="members" onclick="switchAdminTab('members')">Members</button>
+    </div>
+
+    <div id="adminTabContent">
+      <div class="form-card" style="margin-bottom:26px;max-width:560px;">
+        <h3 style="font-family:'Fraunces',serif;color:var(--navy);margin-bottom:14px;">Post a new event or sermon</h3>
+        <div id="contentErr" class="form-err"></div>
+        <form onsubmit="submitContent(event)">
+          <div class="field">
+            <label>Type</label>
+            <select id="cType"><option value="event">Event</option><option value="sermon">Sermon</option></select>
+          </div>
+          <div class="field"><label>Title</label><input type="text" id="cTitle" required></div>
+          <div class="field"><label>Date</label><input type="date" id="cDate" required></div>
+          <div class="field"><label>Time</label><input type="time" id="cTime"></div>
+          <div class="field"><label>Speaker / Leader (optional)</label><input type="text" id="cSpeaker"></div>
+          <div class="field"><label>Description</label><textarea id="cDesc" required></textarea></div>
+          <button type="submit" class="btn btn-gold btn-block">Post to the ministry app</button>
+        </form>
+      </div>
+      <h3 style="font-family:'Fraunces',serif;color:var(--navy);margin-bottom:12px;">Posted items</h3>
+      <div class="grid3" id="adminEventsGrid"></div>
+    </div>
+
+    <div id="adminTabAnnouncements" class="hidden">
+      <div class="form-card" style="margin-bottom:26px;max-width:560px;">
+        <h3 style="font-family:'Fraunces',serif;color:var(--navy);margin-bottom:14px;">Post an announcement</h3>
+        <div id="announceErr" class="form-err"></div>
+        <form onsubmit="submitAnnouncement(event)">
+          <div class="field"><label>Title</label><input type="text" id="aTitle" required></div>
+          <div class="field"><label>Message</label><textarea id="aMessage" required></textarea></div>
+          <button type="submit" class="btn btn-gold btn-block">Post announcement</button>
+        </form>
+      </div>
+      <h3 style="font-family:'Fraunces',serif;color:var(--navy);margin-bottom:12px;">Posted announcements</h3>
+      <div id="adminAnnouncementsList"></div>
+    </div>
+
+    <div id="adminTabPhotos" class="hidden">
+      <div class="form-card" style="margin-bottom:26px;max-width:560px;">
+        <h3 style="font-family:'Fraunces',serif;color:var(--navy);margin-bottom:14px;">Add a photo to the gallery</h3>
+        <div id="photoErr" class="form-err"></div>
+        <form onsubmit="submitPhoto(event)">
+          <div class="field"><label>Photo</label><input type="file" id="pFile" accept="image/*" required></div>
+          <div class="field"><label>Caption (optional)</label><input type="text" id="pCaption"></div>
+          <button type="submit" class="btn btn-gold btn-block">Upload to the ministry app</button>
+        </form>
+        <p class="note-inline">Photos are automatically resized to keep the app fast.</p>
+      </div>
+      <h3 style="font-family:'Fraunces',serif;color:var(--navy);margin-bottom:12px;">Gallery</h3>
+      <div class="gallery-grid" id="adminGalleryGrid"></div>
+    </div>
+
+    <div id="adminTabPrayers" class="hidden">
+      <div id="adminPrayersList"></div>
+    </div>
+
+    <div id="adminTabMembers" class="hidden">
+      <div id="adminMembersList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===================== STORAGE (works standalone, outside Claude's preview) ===================== */
+/* Priority: (1) window.storage if running inside Claude's own preview with it enabled,
+   (2) the browser's localStorage if available (persists across visits in that browser),
+   (3) a plain in-memory store as a last resort (works even in locked-down preview frames
+   that block localStorage, but is cleared on refresh) — so the app never silently fails to save. */
+let __tlorcMem = {};
+let __tlorcUseLS = false;
+try{
+  const t = '__tlorc_probe__';
+  localStorage.setItem(t, '1');
+  localStorage.removeItem(t);
+  __tlorcUseLS = true;
+}catch(e){ __tlorcUseLS = false; }
+
+if(!window.storage){
+  window.storage = {
+    async get(key){
+      if(__tlorcUseLS){
+        const raw = localStorage.getItem('tlorc__' + key);
+        if(raw === null) throw new Error('not found');
+        return { key, value: raw, shared: true };
+      }
+      if(!(key in __tlorcMem)) throw new Error('not found');
+      return { key, value: __tlorcMem[key], shared: true };
+    },
+    async set(key, value){
+      if(__tlorcUseLS) localStorage.setItem('tlorc__' + key, value);
+      else __tlorcMem[key] = value;
+      return { key, value, shared: true };
+    },
+    async delete(key){
+      if(__tlorcUseLS) localStorage.removeItem('tlorc__' + key);
+      else delete __tlorcMem[key];
+      return { key, deleted: true, shared: true };
+    },
+    async list(prefix){
+      const p = prefix || '';
+      let keys = [];
+      if(__tlorcUseLS){
+        for(let i=0;i<localStorage.length;i++){
+          const k = localStorage.key(i);
+          if(k && k.indexOf('tlorc__' + p) === 0) keys.push(k.slice('tlorc__'.length));
+        }
+      } else {
+        keys = Object.keys(__tlorcMem).filter(k => k.indexOf(p) === 0);
+      }
+      return { keys, prefix, shared: true };
+    }
+  };
+}
+
+/* ===================== STATE ===================== */
+let adminUser = null;     // set only once admin signs in
+let isAdmin = false;
+let allEvents = [];
+let allPrayers = [];
+let allMembers = [];
+let allAnnouncements = [];
+let allPhotos = [];
+
+/* ===================== STORAGE HELPERS ===================== */
+async function listAndGet(prefix, shared){
+  const out = [];
+  try{
+    const listing = await window.storage.list(prefix, shared);
+    const keys = (listing && listing.keys) ? listing.keys : [];
+    for(const k of keys){
+      try{
+        const r = await window.storage.get(k, shared);
+        if(r && r.value) out.push(JSON.parse(r.value));
+      }catch(e){ /* skip unreadable key */ }
+    }
+  }catch(e){ /* prefix has no entries yet */ }
+  return out;
+}
+
+async function saveRecord(key, obj, shared){
+  await window.storage.set(key, JSON.stringify(obj), shared);
+}
+
+/* ===================== SEED ADMIN ===================== */
+async function ensureAdminSeed(){
+  try{
+    await window.storage.get('user:admin', true);
+  }catch(e){
+    await saveRecord('user:admin', {
+      username:'admin', name:'Ministry Admin', contact:'', password:'Anchor2026!',
+      role:'admin', joined:true, createdAt:Date.now()
+    }, true);
+  }
+}
+
+/* ===================== JOIN MODAL (no account needed) ===================== */
+function openJoin(){
+  document.getElementById('joinOverlay').classList.add('show');
+  document.getElementById('joinErr').classList.remove('show');
+  document.getElementById('joinOk').classList.add('hidden');
+}
+function closeJoin(){
+  document.getElementById('joinOverlay').classList.remove('show');
+}
+function showJoinErr(msg){
+  const el = document.getElementById('joinErr');
+  el.textContent = msg; el.classList.add('show');
+}
+
+async function doJoin(e){
+  e.preventDefault();
+  const name = document.getElementById('jName').value.trim();
+  const contact = document.getElementById('jContact').value.trim();
+  const location = document.getElementById('jLocation').value.trim();
+  const message = document.getElementById('jMessage').value.trim();
+  document.getElementById('joinErr').classList.remove('show');
+  if(!name || !contact){ showJoinErr('Please share your name and a phone number or email.'); return; }
+
+  try{
+    const id = 'mem_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+    const record = { id, name, contact, location, message, date: new Date().toISOString() };
+    await saveRecord('member:' + id, record, true);
+    document.getElementById('joinForm').reset();
+    document.getElementById('joinOk').classList.remove('hidden');
+    await refreshAllData();
+    setTimeout(closeJoin, 2200);
+  }catch(err){
+    showJoinErr('Something went wrong saving your details. Please try again — if this keeps happening, open this page in a full browser tab rather than a preview.');
+  }
+}
+
+/* ===================== ADMIN LOGIN ===================== */
+function openAdminLogin(){
+  document.getElementById('adminOverlay').classList.add('show');
+  document.getElementById('adminErr').classList.remove('show');
+}
+function closeAdminLogin(){
+  document.getElementById('adminOverlay').classList.remove('show');
+}
+async function doAdminLogin(e){
+  e.preventDefault();
+  const username = document.getElementById('adminUsername').value.trim().toLowerCase();
+  const password = document.getElementById('adminPassword').value;
+  let rec = null;
+  try{ const r = await window.storage.get('user:' + username, true); rec = r ? JSON.parse(r.value) : null; }catch(e){}
+  const errEl = document.getElementById('adminErr');
+  if(!rec || rec.role !== 'admin' || rec.password !== password){
+    errEl.textContent = 'Incorrect admin credentials.'; errEl.classList.add('show'); return;
+  }
+  isAdmin = true;
+  adminUser = rec;
+  closeAdminLogin();
+  document.getElementById('siteContent').classList.add('hidden');
+  document.getElementById('adminShell').classList.remove('hidden');
+  document.getElementById('adminNameLabel').textContent = rec.name || rec.username;
+  window.scrollTo({top:0, behavior:'instant'});
+  await refreshAllData();
+  renderAdmin();
+}
+function adminLogout(){
+  isAdmin = false;
+  adminUser = null;
+  document.getElementById('adminShell').classList.add('hidden');
+  document.getElementById('siteContent').classList.remove('hidden');
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+/* ===================== PRAYER SUBMISSION ===================== */
+async function submitPrayer(e){
+  e.preventDefault();
+  const name = document.getElementById('pName').value.trim();
+  const contact = document.getElementById('pContact').value.trim();
+  const request = document.getElementById('pRequest').value.trim();
+  const errEl = document.getElementById('prayerFormErr');
+  errEl.classList.remove('show');
+  if(!name || !request){ errEl.textContent='Please share your name and your request.'; errEl.classList.add('show'); return; }
+
+  const id = 'pr_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+  const record = { id, name, contact, request, status:'new', date: new Date().toISOString() };
+  await saveRecord('prayer:' + id, record, true);
+  document.getElementById('prayerForm').reset();
+  document.getElementById('prayerFormOk').classList.remove('hidden');
+  setTimeout(()=>document.getElementById('prayerFormOk').classList.add('hidden'), 5000);
+  refreshAllData();
+}
+
+/* ===================== ADMIN: POST EVENT/SERMON ===================== */
+async function submitContent(e){
+  e.preventDefault();
+  const type = document.getElementById('cType').value;
+  const title = document.getElementById('cTitle').value.trim();
+  const date = document.getElementById('cDate').value;
+  const time = document.getElementById('cTime').value;
+  const speaker = document.getElementById('cSpeaker').value.trim();
+  const desc = document.getElementById('cDesc').value.trim();
+  const errEl = document.getElementById('contentErr');
+  errEl.classList.remove('show');
+  if(!title || !date || !desc){ errEl.textContent='Please fill in title, date and description.'; errEl.classList.add('show'); return; }
+
+  const id = 'ev_' + Date.now();
+  const record = { id, type, title, date, time, speaker, desc, postedAt:Date.now() };
+  await saveRecord('content:' + id, record, true);
+  e.target.reset();
+  await refreshAllData();
+  renderAdmin();
+}
+
+async function deleteContent(id){
+  try{ await window.storage.delete('content:' + id, true); }catch(e){}
+  await refreshAllData();
+  renderAdmin();
+}
+
+async function markPrayed(id){
+  try{
+    const r = await window.storage.get('prayer:' + id, true);
+    if(r){
+      const rec = JSON.parse(r.value);
+      rec.status = rec.status === 'prayed' ? 'new' : 'prayed';
+      await saveRecord('prayer:' + id, rec, true);
+    }
+  }catch(e){}
+  await refreshAllData();
+  renderAdmin();
+}
+
+async function deletePrayer(id){
+  try{ await window.storage.delete('prayer:' + id, true); }catch(e){}
+  await refreshAllData();
+  renderAdmin();
+}
+
+async function deleteMember(id){
+  try{ await window.storage.delete('member:' + id, true); }catch(e){}
+  await refreshAllData();
+  renderAdmin();
+}
+
+/* ===================== ADMIN: ANNOUNCEMENTS ===================== */
+async function submitAnnouncement(e){
+  e.preventDefault();
+  const title = document.getElementById('aTitle').value.trim();
+  const message = document.getElementById('aMessage').value.trim();
+  const errEl = document.getElementById('announceErr');
+  errEl.classList.remove('show');
+  if(!title || !message){ errEl.textContent='Please fill in a title and a message.'; errEl.classList.add('show'); return; }
+
+  const id = 'an_' + Date.now();
+  const record = { id, title, message, postedAt: Date.now() };
+  await saveRecord('announcement:' + id, record, true);
+  e.target.reset();
+  await refreshAllData();
+  renderAdmin();
+}
+
+async function deleteAnnouncement(id){
+  try{ await window.storage.delete('announcement:' + id, true); }catch(e){}
+  await refreshAllData();
+  renderAdmin();
+}
+
+/* ===================== ADMIN: PHOTO GALLERY ===================== */
+function readAndCompressImage(file, maxDim, quality){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('Could not read that file.'));
+    reader.onload = () => {
+      const img = new Image();
+      img.onerror = () => reject(new Error('That file does not look like a valid image.'));
+      img.onload = () => {
+        let { width, height } = img;
+        if(width > maxDim || height > maxDim){
+          if(width > height){ height = Math.round(height * maxDim / width); width = maxDim; }
+          else { width = Math.round(width * maxDim / height); height = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+async function submitPhoto(e){
+  e.preventDefault();
+  const fileInput = document.getElementById('pFile');
+  const caption = document.getElementById('pCaption').value.trim();
+  const errEl = document.getElementById('photoErr');
+  errEl.classList.remove('show');
+  const file = fileInput.files && fileInput.files[0];
+  if(!file){ errEl.textContent = 'Please choose a photo to upload.'; errEl.classList.add('show'); return; }
+
+  try{
+    const dataUrl = await readAndCompressImage(file, 1000, 0.72);
+    const id = 'ph_' + Date.now();
+    const record = { id, dataUrl, caption, postedAt: Date.now() };
+    await saveRecord('photo:' + id, record, true);
+    e.target.reset();
+    await refreshAllData();
+    renderAdmin();
+  }catch(err){
+    errEl.textContent = err.message || 'Could not upload that photo — please try a different file.';
+    errEl.classList.add('show');
+  }
+}
+
+async function deletePhoto(id){
+  try{ await window.storage.delete('photo:' + id, true); }catch(e){}
+  await refreshAllData();
+  renderAdmin();
+}
+
+/* ===================== DATA REFRESH + RENDER ===================== */
+async function refreshAllData(){
+  allEvents = await listAndGet('content:', true);
+  allEvents.sort((a,b)=> new Date(a.date) - new Date(b.date));
+  allPrayers = await listAndGet('prayer:', true);
+  allPrayers.sort((a,b)=> new Date(b.date) - new Date(a.date));
+  allMembers = await listAndGet('member:', true);
+  allMembers.sort((a,b)=> new Date(b.date) - new Date(a.date));
+  allAnnouncements = await listAndGet('announcement:', true);
+  allAnnouncements.sort((a,b)=> b.postedAt - a.postedAt);
+  allPhotos = await listAndGet('photo:', true);
+  allPhotos.sort((a,b)=> b.postedAt - a.postedAt);
+  renderPublicEvents();
+  renderPublicAnnouncements();
+  renderPublicGallery();
+}
+
+function fmtDate(d, t){
+  try{
+    const dt = new Date(d + (t ? 'T'+t : 'T00:00'));
+    const opts = {weekday:'short', month:'short', day:'numeric'};
+    let out = dt.toLocaleDateString(undefined, opts);
+    if(t) out += ' · ' + dt.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+    return out;
+  }catch(e){ return d; }
+}
+
+function renderPublicEvents(){
+  const grid = document.getElementById('publicEventsGrid');
+  const upcoming = allEvents.filter(ev => new Date(ev.date) >= new Date(new Date().toDateString()));
+  if(upcoming.length === 0){
+    grid.innerHTML = '<div class="empty-note">No upcoming events or sermons yet — check back soon, or follow us on TikTok for updates.</div>';
+    return;
+  }
+  grid.innerHTML = upcoming.map(ev => `
+    <div class="item-card">
+      <span class="tag ${ev.type}">${ev.type === 'sermon' ? 'Sermon' : 'Event'}</span>
+      <h3>${escapeHtml(ev.title)}</h3>
+      <div class="when">${fmtDate(ev.date, ev.time)}</div>
+      <p class="desc">${escapeHtml(ev.desc)}</p>
+      ${ev.speaker ? `<div class="speaker">${escapeHtml(ev.speaker)}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderPublicAnnouncements(){
+  const el = document.getElementById('publicAnnouncements');
+  if(!allAnnouncements.length){
+    el.innerHTML = '<div class="empty-note">No announcements right now — check back soon.</div>';
+    return;
+  }
+  el.innerHTML = allAnnouncements.map(a => `
+    <div class="announce-card">
+      <div class="when">${new Date(a.postedAt).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})}</div>
+      <h3>${escapeHtml(a.title)}</h3>
+      <p>${escapeHtml(a.message)}</p>
+    </div>
+  `).join('');
+}
+
+function renderPublicGallery(){
+  const grid = document.getElementById('publicGalleryGrid');
+  if(!allPhotos.length){
+    grid.innerHTML = '<div class="empty-note" style="grid-column:1/-1">No photos yet — check back soon.</div>';
+    return;
+  }
+  grid.innerHTML = allPhotos.map(p => `
+    <div class="gallery-item">
+      <img src="${p.dataUrl}" alt="${escapeHtml(p.caption || 'TLORC Youth Ministry photo')}" loading="lazy">
+      ${p.caption ? `<div class="cap">${escapeHtml(p.caption)}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+function escapeHtml(s){
+  return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* ===================== ADMIN RENDER ===================== */
+let adminTab = 'content';
+function switchAdminTab(tab){
+  adminTab = tab;
+  document.querySelectorAll('.admin-tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.getElementById('adminTabContent').classList.toggle('hidden', tab !== 'content');
+  document.getElementById('adminTabAnnouncements').classList.toggle('hidden', tab !== 'announcements');
+  document.getElementById('adminTabPhotos').classList.toggle('hidden', tab !== 'photos');
+  document.getElementById('adminTabPrayers').classList.toggle('hidden', tab !== 'prayers');
+  document.getElementById('adminTabMembers').classList.toggle('hidden', tab !== 'members');
+  renderAdmin();
+}
+
+function renderAdmin(){
+  document.getElementById('statMembers').textContent = allMembers.length;
+  document.getElementById('statPrayers').textContent = allPrayers.length;
+  document.getElementById('statEvents').textContent = allEvents.length;
+  document.getElementById('statAnnouncements').textContent = allAnnouncements.length;
+  document.getElementById('statPhotos').textContent = allPhotos.length;
+
+  const grid = document.getElementById('adminEventsGrid');
+  grid.innerHTML = allEvents.length ? allEvents.map(ev => `
+    <div class="item-card">
+      <button class="del" onclick="deleteContent('${ev.id}')">Remove</button>
+      <span class="tag ${ev.type}">${ev.type === 'sermon' ? 'Sermon' : 'Event'}</span>
+      <h3>${escapeHtml(ev.title)}</h3>
+      <div class="when">${fmtDate(ev.date, ev.time)}</div>
+      <p class="desc">${escapeHtml(ev.desc)}</p>
+      ${ev.speaker ? `<div class="speaker">${escapeHtml(ev.speaker)}</div>` : ''}
+    </div>
+  `).join('') : '<div class="empty-note">Nothing posted yet — use the form above.</div>';
+
+  const al = document.getElementById('adminAnnouncementsList');
+  al.innerHTML = allAnnouncements.length ? allAnnouncements.map(a => `
+    <div class="announce-card" style="position:relative;">
+      <button class="del" style="position:absolute;top:14px;right:16px;" onclick="deleteAnnouncement('${a.id}')">Remove</button>
+      <div class="when">${new Date(a.postedAt).toLocaleDateString()}</div>
+      <h3>${escapeHtml(a.title)}</h3>
+      <p>${escapeHtml(a.message)}</p>
+    </div>
+  `).join('') : '<div class="empty-note">No announcements posted yet — use the form above.</div>';
+
+  const gg = document.getElementById('adminGalleryGrid');
+  gg.innerHTML = allPhotos.length ? allPhotos.map(p => `
+    <div class="gallery-item" style="position:relative;">
+      <img src="${p.dataUrl}" alt="${escapeHtml(p.caption || 'Photo')}">
+      <button class="del" style="position:absolute;top:8px;right:8px;background:rgba(255,255,255,.9);border-radius:6px;padding:2px 8px;" onclick="deletePhoto('${p.id}')">Remove</button>
+      ${p.caption ? `<div class="cap">${escapeHtml(p.caption)}</div>` : ''}
+    </div>
+  `).join('') : '<div class="empty-note" style="grid-column:1/-1">No photos uploaded yet — use the form above.</div>';
+
+  const pl = document.getElementById('adminPrayersList');
+  pl.innerHTML = allPrayers.length ? allPrayers.map(p => `
+    <div class="prayer-row">
+      <div class="top">
+        <span><b>${escapeHtml(p.name)}</b> ${p.contact ? '· '+escapeHtml(p.contact) : ''} · ${new Date(p.date).toLocaleDateString()}</span>
+        <span style="display:flex;gap:10px;align-items:center;">
+          <span class="pill-status ${p.status==='prayed'?'prayed':''}" style="cursor:pointer" onclick="markPrayed('${p.id}')">${p.status === 'prayed' ? 'Prayed for ✓ (tap to undo)' : 'Mark as prayed'}</span>
+          <button class="del" onclick="deletePrayer('${p.id}')">Delete</button>
+        </span>
+      </div>
+      <p>${escapeHtml(p.request)}</p>
+    </div>
+  `).join('') : '<div class="empty-note">No prayer requests yet.</div>';
+
+  const ml = document.getElementById('adminMembersList');
+  ml.innerHTML = allMembers.length ? allMembers.map(m => `
+    <div class="prayer-row">
+      <div class="top">
+        <span><b>${escapeHtml(m.name)}</b> · ${escapeHtml(m.contact)} ${m.location ? '· '+escapeHtml(m.location) : ''} · ${new Date(m.date).toLocaleDateString()}</span>
+        <button class="del" onclick="deleteMember('${m.id}')">Delete</button>
+      </div>
+      ${m.message ? `<p>${escapeHtml(m.message)}</p>` : '<p style="color:var(--ink-soft);font-style:italic;">No message shared.</p>'}
+    </div>
+  `).join('') : '<div class="empty-note">No members have joined yet.</div>';
+}
+
+/* ===================== COUNTDOWN TO NEXT SATURDAY 5:30PM ===================== */
+function nextMeetingDate(){
+  const now = new Date();
+  const target = new Date(now);
+  const day = now.getDay(); // 0=Sun..6=Sat
+  let daysUntilSat = (6 - day + 7) % 7;
+  target.setDate(now.getDate() + daysUntilSat);
+  target.setHours(17,30,0,0);
+  if(target <= now){ target.setDate(target.getDate() + 7); }
+  return target;
+}
+function tickCountdown(){
+  const target = nextMeetingDate();
+  const diff = Math.max(0, target - new Date());
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  document.getElementById('cdDays').textContent = days;
+  document.getElementById('cdHours').textContent = hours;
+  document.getElementById('cdMins').textContent = mins;
+}
+
+/* ===================== INIT ===================== */
+document.getElementById('yearNow').textContent = new Date().getFullYear();
+document.getElementById('joinOverlay').addEventListener('click', (e)=>{ if(e.target.id==='joinOverlay') closeJoin(); });
+document.getElementById('adminOverlay').addEventListener('click', (e)=>{ if(e.target.id==='adminOverlay') closeAdminLogin(); });
+
+(async function init(){
+  await ensureAdminSeed();
+  await refreshAllData();
+  tickCountdown();
+  setInterval(tickCountdown, 30000);
+})();
+</script>
+</body>
+</html>
